@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dondie52.github.io/dfi/sitemap.xml
