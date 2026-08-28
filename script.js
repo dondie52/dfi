@@ -82,7 +82,7 @@ if (!reduceMotion && 'IntersectionObserver' in window) {
   });
 
   const targets = document.querySelectorAll(
-    '.intro-grid, .section-heading, .focus-list, .showcase-heading, .showcase-grid, .gallery-copy, .gallery figure, .connect-grid, .contact-grid'
+    '.intro-grid, .section-heading, .focus-list, .showcase-heading, .cta-band-action, .gallery-copy, .gallery figure, .connect-grid, .contact-grid'
   );
   const revealer = new IntersectionObserver(
     (entries, observer) => {

@@ -338,6 +338,7 @@ h3 {
   margin: 0;
 }
 .intro p:not(.section-label),
+.showcase-heading > p:not(.section-label),
 .gallery-copy > p:not(.section-label),
 .connect-grid p:not(.section-label),
 .contact-heading > p:not(.section-label) {
@@ -442,8 +443,8 @@ h3 {
   display: block;
 }
 
-/* Showcase ----------------------------------------------------- */
-.showcase {
+/* CTA band ------------------------------------------------------ */
+.cta-band {
   padding: var(--section-y) 0;
 }
 .showcase-heading {
@@ -454,30 +455,6 @@ h3 {
   font-size: clamp(2.1rem, 3.4vw, 3.2rem);
   margin: var(--gap-s) 0 0;
 }
-.showcase-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--gap-l);
-}
-.showcase-grid figure {
-  margin: 0;
-}
-/* Both logo PNGs are transparent-background with dark navy lettering, so
-   they must sit on a light ground — on --ink the wordmark disappears. */
-.showcase-frame {
-  aspect-ratio: 3 / 2;
-  background: #fff;
-  border: 1px solid var(--rule);
-  display: grid;
-  place-items: center;
-  padding: 2.5rem;
-}
-.showcase-frame img {
-  max-width: 70%;
-  max-height: 80%;
-  object-fit: contain;
-}
-.showcase-grid figcaption,
 .gallery figcaption {
   font-size: 0.72rem;
   color: var(--text-muted);
@@ -833,14 +810,6 @@ html {
   }
   .showcase-heading {
     margin-bottom: 2rem;
-  }
-  .showcase-grid {
-    grid-template-columns: 1fr;
-    gap: var(--gap-m);
-  }
-  .showcase-frame {
-    aspect-ratio: 16 / 10;
-    padding: 2rem;
   }
   .gallery figure {
     order: -1;
