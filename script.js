@@ -2,9 +2,6 @@ const config = window.DFI_CONFIG || {};
 const header = document.querySelector('[data-header]');
 const menuButton = document.querySelector('[data-menu-button]');
 const menu = document.querySelector('[data-menu]');
-const form = document.querySelector('[data-contact-form]');
-const fields = document.querySelector('[data-form-fields]');
-const status = document.querySelector('[data-form-status]');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 document.title = config.siteTitle || document.title;
@@ -82,7 +79,7 @@ if (!reduceMotion && 'IntersectionObserver' in window) {
   });
 
   const targets = document.querySelectorAll(
-    '.intro-grid, .section-heading, .focus-list, .showcase-heading, .cta-band-action, .gallery-copy, .gallery figure, .connect-grid, .contact-grid'
+    '.intro-grid, .section-heading, .focus-list, .section-intro, .programmes-grid, .involve-cards, .gallery-copy, .gallery figure, .connect-grid'
   );
   const revealer = new IntersectionObserver(
     (entries, observer) => {
@@ -97,24 +94,5 @@ if (!reduceMotion && 'IntersectionObserver' in window) {
   targets.forEach((el) => {
     el.classList.add('reveal');
     revealer.observe(el);
-  });
-}
-
-/* Contact form ------------------------------------------------- */
-if (config.formEndpoint && form && fields && status) {
-  fields.disabled = false;
-  status.textContent = 'All fields are required. We will only use your details to respond to this enquiry.';
-  form.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    if (!form.checkValidity()) { form.reportValidity(); return; }
-    const submit = form.querySelector('button[type="submit"]');
-    submit.disabled = true; status.textContent = 'Sending your message…';
-    try {
-      const response = await fetch(config.formEndpoint, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form) });
-      if (!response.ok) throw new Error('Submission failed');
-      form.reset(); status.textContent = 'Thanks — your message was sent successfully.';
-    } catch {
-      status.textContent = 'Your message could not be sent. Please try again or contact us through our social channels.';
-    } finally { submit.disabled = false; }
   });
 }

@@ -20,7 +20,6 @@
 
   /* Accent: shares the logo's green hue, lifted for contrast on --ink (12:1) */
   --accent: #6ee7a0;
-  --blue: #4f94ff;
 
   /* Text */
   --text: #3f5266;
@@ -33,7 +32,6 @@
   /* Lines */
   --rule: #cbd1d2;
   --rule-dark: rgba(213, 229, 255, 0.22);
-  --field-border: #9dacb7;
 
   /* Rhythm */
   --section-y: clamp(4.5rem, 9vw, 8.5rem);
@@ -338,10 +336,9 @@ h3 {
   margin: 0;
 }
 .intro p:not(.section-label),
-.showcase-heading > p:not(.section-label),
+.section-intro > p:not(.section-label),
 .gallery-copy > p:not(.section-label),
-.connect-grid p:not(.section-label),
-.contact-heading > p:not(.section-label) {
+.connect-grid p:not(.section-label) {
   max-width: 60ch;
   color: var(--text);
   font-size: 1.08rem;
@@ -443,15 +440,12 @@ h3 {
   display: block;
 }
 
-/* CTA band ------------------------------------------------------ */
-.cta-band {
-  padding: var(--section-y) 0;
-}
-.showcase-heading {
+/* Section intro (shared heading block for light sections) ------ */
+.section-intro {
   max-width: 640px;
   margin-bottom: 3rem;
 }
-.showcase-heading h2 {
+.section-intro h2 {
   font-size: clamp(2.1rem, 3.4vw, 3.2rem);
   margin: var(--gap-s) 0 0;
 }
@@ -459,6 +453,68 @@ h3 {
   font-size: 0.72rem;
   color: var(--text-muted);
   margin-top: 0.75rem;
+}
+
+/* Programmes ----------------------------------------------------- */
+.programmes {
+  padding: var(--section-y) 0;
+}
+.programmes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--gap-m);
+}
+.programmes-grid article {
+  border: 1px solid var(--rule);
+  padding: 1.6rem;
+}
+.programmes-grid h3 {
+  font-family: var(--display);
+  font-size: 1.25rem;
+  margin: 0 0 0.6rem;
+}
+.programmes-grid p {
+  margin: 0;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+.programme-badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0.25rem 0.65rem;
+  margin-bottom: 0.9rem;
+}
+
+/* Get involved cards --------------------------------------------- */
+.involve-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--gap-m);
+  margin-top: 2.5rem;
+}
+.involve-cards article {
+  border: 1px solid var(--rule);
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 0.4rem;
+}
+.involve-cards h3 {
+  font-family: var(--display);
+  font-size: 1.25rem;
+  margin: 0;
+}
+.involve-cards p {
+  margin: 0 0 0.6rem;
+  color: var(--text);
+  font-size: 0.95rem;
 }
 
 /* Gallery ------------------------------------------------------ */
@@ -529,112 +585,9 @@ h3 {
   color: var(--accent);
 }
 
-/* Contact ------------------------------------------------------ */
+/* Contact -------------------------------------------------------- */
 .contact {
   padding: var(--section-y) 0;
-}
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 0.9fr;
-  gap: clamp(2.5rem, 5vw, 6rem);
-}
-.involve-list {
-  display: grid;
-  gap: 0;
-  margin: var(--gap-l) 0 0;
-  border-top: 1px solid var(--rule);
-  max-width: 60ch;
-}
-.involve-list > div {
-  display: grid;
-  grid-template-columns: 11rem 1fr;
-  gap: var(--gap-s);
-  padding: 0.9rem 0;
-  border-bottom: 1px solid var(--rule);
-}
-.involve-list dt {
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: 1.05rem;
-  letter-spacing: -0.02em;
-}
-.involve-list dd {
-  margin: 0;
-  color: var(--text);
-  font-size: 0.98rem;
-}
-.contact-social {
-  display: flex;
-  gap: 1.2rem;
-  flex-wrap: wrap;
-  margin-top: 2rem;
-}
-.contact-social a {
-  font-weight: 700;
-  text-decoration-color: var(--brand-a);
-  text-underline-offset: 0.35rem;
-  text-decoration-thickness: 2px;
-}
-.contact-form {
-  background: var(--surface);
-  padding: 2rem;
-  align-self: start;
-}
-.contact-form fieldset {
-  padding: 0;
-  border: 0;
-  margin: 0;
-  display: grid;
-  gap: var(--gap-s);
-}
-.contact-form label {
-  display: grid;
-  gap: 0.4rem;
-  font-size: 0.85rem;
-  font-weight: 700;
-}
-.contact-form input,
-.contact-form textarea,
-.contact-form select {
-  font: inherit;
-  color: var(--ink);
-  caret-color: var(--brand-a);
-  width: 100%;
-  border: 1px solid var(--field-border);
-  background: #fff;
-  padding: 0.72rem;
-  border-radius: 0;
-}
-.contact-form input::placeholder,
-.contact-form textarea::placeholder {
-  color: var(--text-muted);
-}
-.contact-form input:focus,
-.contact-form textarea:focus,
-.contact-form select:focus {
-  outline: 3px solid var(--blue);
-  outline-offset: 1px;
-}
-.contact-form .consent {
-  display: flex;
-  align-items: start;
-  font-weight: 500;
-}
-.consent input {
-  width: 1rem;
-  margin: 0.25rem 0.55rem 0 0;
-  accent-color: var(--brand-a);
-}
-.contact-form fieldset:disabled {
-  opacity: 0.62;
-}
-.contact-form .button:disabled {
-  cursor: not-allowed;
-}
-.form-status {
-  font-size: 0.85rem;
-  color: var(--text);
-  margin: 1.25rem 0 0;
 }
 
 /* Footer ------------------------------------------------------- */
@@ -668,9 +621,6 @@ footer {
 :focus-visible {
   outline: 3px solid var(--accent);
   outline-offset: 4px;
-}
-.contact-form :focus-visible {
-  outline-color: var(--blue);
 }
 html {
   scrollbar-color: var(--brand-a) var(--surface);
@@ -713,12 +663,6 @@ html {
     grid-template-columns: 1fr;
     gap: var(--gap-l);
     align-items: start;
-  }
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
-  .contact-form {
-    max-width: 34rem;
   }
   .focus-list article {
     grid-template-columns: 64px 1fr 40px;
@@ -808,7 +752,7 @@ html {
     width: 22px;
     height: 22px;
   }
-  .showcase-heading {
+  .section-intro {
     margin-bottom: 2rem;
   }
   .gallery figure {
@@ -816,13 +760,6 @@ html {
   }
   .gallery figure img {
     aspect-ratio: 1 / 1;
-  }
-  .involve-list > div {
-    grid-template-columns: 1fr;
-    gap: 0.15rem;
-  }
-  .contact-form {
-    padding: 1.5rem;
   }
   .footer-inner {
     grid-template-columns: 1fr;

@@ -1,7 +1,5 @@
 /*
  * Public site configuration. Update only verified values.
- * To activate the form, create a Formspree form and paste its full endpoint below.
- * Example: https://formspree.io/f/abcdwxyz
  *
  * NOTE: siteUrl must match the absolute URLs hardcoded in index.html's
  * canonical / og:url / og:image tags. Social scrapers do not run JavaScript,
@@ -14,6 +12,5 @@ window.DFI_CONFIG = {
   facebookUrl: 'https://www.facebook.com/profile.php?id=61593348803461',
   // TODO: unverified. Original value contained literal spaces and could not resolve.
   tiktokUrl: 'https://www.tiktok.com/@digitalfutureinitiative',
-  formEndpoint: '',
   contactEmail: ''
 };

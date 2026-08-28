@@ -18,10 +18,10 @@ Open `index.html` directly in a browser, or serve the directory with any static 
 
 ## Architecture
 
-- `index.html` — entire page as one document, sections in scroll order (hero → about → focus → brand showcase → gallery → connect → contact → footer). Markup is written dense/minified-by-hand (little internal whitespace); match that style rather than reformatting to a more verbose layout.
+- `index.html` — entire page as one document, sections in scroll order (hero → about → focus → programmes → get involved → about DFI → gallery → connect → footer). Markup is written dense/minified-by-hand (little internal whitespace); match that style rather than reformatting to a more verbose layout.
 - `styles.css` — plain CSS, no preprocessor. All colour, spacing, and easing lives in the `:root` token block at the top; add a token there rather than hardcoding a literal further down. Section rhythm is the single `--section-y` clamp, so sections stay in step and need no per-breakpoint padding overrides. Two breakpoints: 1024px (relax the desktop grids) and 760px (collapse to one column).
-- `script.js` — small vanilla-JS behavior layer: applies `config.js` values into the DOM (title, social links, footer year), mobile nav (toggle, Escape, outside click), header scroll-state class, nav scrollspy, scroll reveals, and the contact form submit handler. No dependencies, no module system — everything is top-level `querySelector` + event listeners, with `?.` guards throughout.
-- `config.js` — the only file meant to hold editable/environment-specific values (`siteTitle`, `mission`, `siteUrl`, social URLs, `formEndpoint`, `contactEmail`). `script.js` should stay generic; anything that changes per-deployment belongs here instead.
+- `script.js` — small vanilla-JS behavior layer: applies `config.js` values into the DOM (title, social links, footer year), mobile nav (toggle, Escape, outside click), header scroll-state class, nav scrollspy, and scroll reveals. No dependencies, no module system — everything is top-level `querySelector` + event listeners, with `?.` guards throughout.
+- `config.js` — the only file meant to hold editable/environment-specific values (`siteTitle`, `mission`, `siteUrl`, social URLs, `contactEmail`). `script.js` should stay generic; anything that changes per-deployment belongs here instead.
 
 ### Two things that are easy to get wrong
 
@@ -38,6 +38,6 @@ Icons are inline SVG (`.focus-symbol`, `.social-icon`), not Unicode glyphs — t
 
 ## Content rules (from README.md / PRODUCT.md)
 
-- The contact form is intentionally disabled (`fieldset disabled`) until `config.js`'s `formEndpoint` is set to a real Formspree endpoint tied to a verified email. Don't enable it or fabricate an endpoint.
-- Do not add impact figures, programme details, addresses, event information, testimonials, or other factual claims unless they've been explicitly verified/supplied — this site intentionally stays high-level until real content exists.
+- There is no contact form. Visitors are routed to Facebook/TikTok DMs (`.involve-cards` and the social links in `#connect`) instead, because there's no verified contact email or submission endpoint yet. Don't add a form back without a real, verified endpoint — route through the social links until then.
+- Do not add impact figures, addresses, event information, testimonials, named individuals, or other factual claims unless they've been explicitly verified/supplied — this site intentionally stays high-level until real content exists. The five cards in `#programmes` are an exception the site owner explicitly supplied as an illustrative "coming soon" list, not a verified track record — keep them labeled `.programme-badge` "Coming soon" and don't imply any have launched until told otherwise.
 - Images under `assets/images/` that are AI-generated illustrations are explicitly labeled as such in their `alt` text and adjacent captions (see the `.image-note` and `<figcaption>` elements in `index.html`). Preserve that labeling if you touch those sections; don't present illustrative images as real photos.
