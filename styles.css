@@ -67,8 +67,15 @@ body {
 a {
   color: inherit;
 }
+/* height:auto is mandatory alongside the width/height attributes in the
+   markup. Those attributes are presentational hints that give an image a
+   DEFINITE height, and `aspect-ratio` is ignored unless one dimension is
+   auto — without this, every aspect-ratio rule below silently does nothing.
+   Elements that genuinely need a fixed height set it themselves and win
+   on specificity (.hero-media img, .brand-mark). */
 img {
   max-width: 100%;
+  height: auto;
 }
 .shell {
   width: min(1160px, calc(100% - 48px));
@@ -455,9 +462,12 @@ h3 {
 .showcase-grid figure {
   margin: 0;
 }
+/* Both logo PNGs are transparent-background with dark navy lettering, so
+   they must sit on a light ground — on --ink the wordmark disappears. */
 .showcase-frame {
   aspect-ratio: 3 / 2;
-  background: var(--ink);
+  background: #fff;
+  border: 1px solid var(--rule);
   display: grid;
   place-items: center;
   padding: 2.5rem;
